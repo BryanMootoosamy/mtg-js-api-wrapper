@@ -13,3 +13,15 @@ This project is a tool to gather and use all datas to fill a html page.
 ## User's Guide
 
 ### retrieving data's functions
+ ```Javascript
+ let search = () => {
+    position = 1;
+    page.innerHTML = '';
+    requestArg();
+    console.log(requestUrl);
+    axios.get(requestUrl).then((response) => {
+        data = response.data.cards;
+        pagination(data);
+        requestUrl = 'https://api.magicthegathering.io/v1/cards';
+    });
+}; ```
