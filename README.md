@@ -25,3 +25,5 @@ This project is a tool to gather and use all datas to fill a html page.
         requestUrl = 'https://api.magicthegathering.io/v1/cards';
     });
 }; ```
+requestArg() is the finction that construct throught searchParameters the filters that will be added to the api url to make the most accurate request possible. searchParameters have 2 parameters: the first one is the input value retrieved with Javascript getElementById() and the second is the filter that will be returned in the constructed URL. if a searchParameters is empty, it will return nothing.
+Awios will use the constructed url to make his request. Position is the number of the first page of result.
