@@ -5,7 +5,7 @@ let display = (data, position) => { // allows you to show every gathered cards (
             break;
         }
         if (data[i].imageUrl == undefined) {
-            cardContainer.innerHTML += "<a href='/card-viewer?id="+data[i].id+"'><div class='missing-card-image' ><p>"+data[i].name+"</p></div></a>"
+            cardContainer.innerHTML += "<a href='/card-viewer?id="+data[i].id+"'><div class='missing-card-image' ><p>"+data[i].name+"</p></div></a>";
         } else {
             cardContainer.innerHTML += "<a href='/card-viewer?id="+data[i].multiverseid+"'><img class='card-item' src="+data[i].imageUrl+" /></a>";
         }
@@ -116,5 +116,5 @@ let htmlFiller = (data) => { // fill the card-viewer with card information
     }
     data.legalities.forEach(element => {
         legality.innerHTML += '<p class="ruling-date">'+element.format+': </p><p class="ruling-text">'+element.legality+'</p>';
-    })
+    });
 };
