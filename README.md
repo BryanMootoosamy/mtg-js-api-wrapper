@@ -12,4 +12,4 @@ This project is a tool to gather and use all datas to fill a html page.
 
 ## User's Guide
 
-### retrieving data's function
+### retrieving data's functions
