@@ -61,7 +61,7 @@ let ruling = document.getElementById('whee you will show the ruling');
 let legality = document.getElementById('where you will show the legality');
 let multiverseid = urlSpliter();
 if (multiverseid.length > 10) { // if the id retrieved by the urlsplitter is loner than 10 characters it means it's a simple id 
-and not a multiverse id and the card will not have an image as long as some informations
+//and not a multiverse id and the card will not have an image as long as some informations
     axios.get('https://api.magicthegathering.io/v1/cards?id='+multiverseid).then((response) => {
         let data = response.data.cards[0];
         htmlFiller(data);
