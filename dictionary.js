@@ -62,24 +62,26 @@ let urlSpliter = () => { // get the multiverse id if exist or the ID inside the 
     return arg[1];
 };
 let manaReplace = (data) => {
-    const regex = /{(\w+)\/?(\w)?}/;
+    const regex = /{(\w+)\/?(\w)?}/g;
     const mana = data.manaCost;
-    return mana.replace(regex, convertToManaCSS);
+    return (mana.replace(regex, convertToManaCSS)).split(',');
 };
 let convertToManaCSS = (matching, group1, group2) => {
-    const prefix = 'ms ms-';
+    let convertedSymbols = ['ms'];
+    const prefix = 'ms-';
     if(group1 !== undefined){
         if(group2 === undefined){ // A simple mana symbol
-            return (prefix + group1.toLowerCase());
+            convertedSymbols.push(prefix + group1.toLowerCase());
         }
         else{ // A complexe mana symbol
             if(group2 == 'P'){
-                return (prefix + group2.toLowerCase() + group1.toLowerCase());
+                convertedSymbols.push(prefix + group2.toLowerCase() + group1.toLowerCase());
             }
             else{
-                return (prefix + group1.toLowerCase() + group2.toLowerCase());
+                convertedSymbols.push(prefix + group1.toLowerCase() + group2.toLowerCase());
             }
         }
+        return convertedSymbols;
     }
 };
 let htmlFiller = (data) => { // fill the card-viewer with card information
