@@ -40,7 +40,7 @@ let isSearchBlank = () => {
 This function will allow you, after you viewed a card and press return to go back in the list of card you got after your search, to show them without having to manually relauch the research.
 
 ```Javascript
-let display = (data, position) => { // allows you to show every gathered cards (even dose without a card image) with a pages system
+let display = (data, position) => { 
     cardContainer.innerHTML = "";
     for (let i = (10 * (position - 1)); i < (10 * position); i++) {
         if (i >= data.length) {
