@@ -62,12 +62,25 @@ let urlSpliter = () => { // get the multiverse id if exist or the ID inside the 
     return arg[1];
 };
 let manaReplace = (data) => {
-    // if (data.manaCost.includes('{U}')) {
-        let mana = data.manaCost;
-        // mana = mana.replace(/{u}/gi, "+");
-        // console.log(data.manaCost);
-        return mana;
-    // }
+    const regex = /{(\w+)\/?(\w)?}/;
+    const mana = data.manaCost;
+    return mana.replace(regex, convertToManaCSS);
+};
+let convertToManaCSS = (matching, group1, group2) => {
+    const prefix = 'ms ms-';
+    if(group1 !== undefined){
+        if(group2 === undefined){ // A simple mana symbol
+            return (prefix + group1.toLowerCase());
+        }
+        else{ // A complexe mana symbol
+            if(group2 == 'P'){
+                return (prefix + group2.toLowerCase() + group1.toLowerCase());
+            }
+            else{
+                return (prefix + group1.toLowerCase() + group2.toLowerCase());
+            }
+        }
+    }
 };
 let htmlFiller = (data) => { // fill the card-viewer with card information
     title.innerHTML = 'Nom de la carte: '+data.name;
