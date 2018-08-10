@@ -1,6 +1,6 @@
 # Magic The Gathering JS API Wrapper
 
-This project is a tool to gather and use all datas to fill a html page.
+This project is a tool to gather and use all datas to fill a html page. The whole library is contained inside the disctionary.js file.
 
 ## Tech used
 
@@ -12,7 +12,7 @@ This project is a tool to gather and use all datas to fill a html page.
 
 ## User's Guide
 
-### retrieving data's functions
+### about the functions
  ```Javascript
  let search = () => {
     position = 1;
