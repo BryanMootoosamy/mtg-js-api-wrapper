@@ -56,3 +56,11 @@ let display = (data, position) => {
 ```
 
 the display function will fill the html container you pointed wit javascript with the cards the user searched, using the pagination() function to only show 10 results per pages. If the card image doesn't exist, it will create a link that you can style as you want. The reason some cards doesn't have images is not an issue with this wrapper but with the api where some cards with a special extention doesn't have one.
+
+### How to use the library
+
+add in the header of your page : 
+```html
+<script src="path/to/dictionary.js"></script>
+```
+create 2 javascript files you will add to your main code, one where you will return the list the user searched and the other one where you fill display the cards informations. 
