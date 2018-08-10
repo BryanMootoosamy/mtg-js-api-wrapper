@@ -38,3 +38,21 @@ let isSearchBlank = () => {
 };
 ```
 This function will allow you, after you viewed a card and press return to go back in the list of card you got after your search, to show them without having to manually relauch the research.
+
+```Javascript
+let display = (data, position) => { // allows you to show every gathered cards (even dose without a card image) with a pages system
+    cardContainer.innerHTML = "";
+    for (let i = (10 * (position - 1)); i < (10 * position); i++) {
+        if (i >= data.length) {
+            break;
+        }
+        if (data[i].imageUrl == undefined) {
+            cardContainer.innerHTML += "<a href='/card-viewer?id="+data[i].id+"'><div class='missing-card-image' ><p>"+data[i].name+"</p></div></a>";
+        } else {
+            cardContainer.innerHTML += "<a href='/card-viewer?id="+data[i].multiverseid+"'><img class='card-item' src="+data[i].imageUrl+" /></a>";
+        }
+    }
+};
+```
+
+the display function will fill the html container you pointed wit javascript with the cards the user searched, using the pagination() function to only show 10 results per pages. If the card image doesn't exist, it will create a link that you can style as you want. The reason some cards doesn't have images is not an issue with this wrapper but with the api where some cards with a special extention doesn't have one.
