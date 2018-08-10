@@ -65,3 +65,24 @@ add in the header of your page :
 <script src="path/to/dictionary.js"></script>
 ```
 create 2 javascript files you will add to your main code, one where you will return the list the user searched and the other one where you fill display the cards informations. 
+you will need a bunch of variables named exatly like this and returing the same thing: 
+For the search feature: 
+```Javascript
+let cardName = document.getElementById('input getting the card nameto search');
+let searchButton = document.getElementById('button lauching the research');
+let cardContainer = document.getElementById('div containing the list');
+let page = document.getElementById('place where the button for pages result will appear');
+let extention = document.getElementById('input getting the extention name');
+let race = document.getElementById('input getting the type of the card (artifact, creature, vampire,...');
+let color = document.getElementById('input getting the mana');
+let artist = document.getElementById('input getting the artist');
+let position = 1;
+let data;
+let requestUrl = 'https://api.magicthegathering.io/v1/cards';
+searchButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    cardContainer.innerHTML = "";
+    search();
+});
+window.onload = isSearchBlank();
+```
