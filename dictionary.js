@@ -1,13 +1,13 @@
 let display = (data, position) => { // allows you to show every gathered cards (even dose without a card image) with a pages system
-    cardContainer.innerHTML = "";
+    cardContainer.innerHTML = '';
     for (let i = (10 * (position - 1)); i < (10 * position); i++) {
         if (i >= data.length) {
             break;
         }
         if (data[i].imageUrl == undefined) {
-            cardContainer.innerHTML += "<a href='/card-viewer?id="+data[i].id+"'><div class='missing-card-image' ><p>"+data[i].name+"</p></div></a>";
+            cardContainer.innerHTML += '<a href="/card-viewer?id="'+data[i].id+'"><div class="missing-card-image" ><p>'+data[i].name+'</p></div></a>';
         } else {
-            cardContainer.innerHTML += "<a href='/card-viewer?id="+data[i].multiverseid+"'><img class='card-item' src="+data[i].imageUrl+" /></a>";
+            cardContainer.innerHTML += '<a href="/card-viewer?id='+data[i].multiverseid+'"><img class="card-item" src='+data[i].imageUrl+' /></a>';
         }
     }
 };
@@ -46,11 +46,11 @@ let search = () => { // launch the request using Axios CDN (function to execute 
     axios.get(requestUrl).then((response) => {
         data = response.data.cards;
         pagination(data);
-        requestUrl = 'https://api.magicthegathering.io/v1/cards';
     });
+    requestUrl = 'https://api.magicthegathering.io/v1/cards';
 };
 let isSearchBlank = () => { // reexecute the request if you open a card then return to the research view
-    if (cardName.value != "" || extention.value != "" || race.value != "" || artist.value != "") {
+    if (cardName.value != '' || extention.value != '' || race.value != '' || artist.value != '') {
         search();
     }
 };
@@ -94,9 +94,9 @@ let htmlFiller = (data) => { // fill the card-viewer with card information
     title.innerHTML = 'Nom de la carte: '+data.name;
     let mana = manaReplace(data);
     if (data.imageUrl == undefined) {
-        imageContainer.innerHTML = "<div class='missing-image'></div>";
+        imageContainer.innerHTML = '<div class="missing-image"></div>';
     } else {
-        imageContainer.innerHTML = "<img src="+data.imageUrl+" alt='card image' />";
+        imageContainer.innerHTML = '<img src='+data.imageUrl+' alt="card image" />';
     }
     artist.innerHTML = 'Nom de l\'artiste: ' +data.artist;
     if (data.flavor != undefined) {
@@ -117,11 +117,11 @@ let htmlFiller = (data) => { // fill the card-viewer with card information
         set.innerHTML = 'Nom du Set: '+data.setName+' ('+data.set+')';
     } else {
         set.innerHTML = 'Nom du Set: '+data.setname;
-    };
+    }
     rarity.innerHTML = 'Rareté: '+data.rarity;
     manaCost.innerHTML = 'Coût en mana: ';
     mana.forEach(element => {
-        manaCost.innerHTML += "<i class='"+element+" ms-cost ms-shadow' ></i>";
+        manaCost.innerHTML += '<i class="'+element+' ms-cost ms-shadow" ></i>';
     });
     if (data.text != undefined) {
         cardText.innerHTML = 'Description des effets: '+data.text;  
