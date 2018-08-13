@@ -6,6 +6,7 @@ This project is a tool to gather and use all datas to fill a html page. The whol
 
 * Axios (cdn version)
 * Javascript ES6
+* Andrew Gioia's Mana Font: https://github.com/andrewgioia/Mana
 
 /!\ This project is not, and will never, using NodeJS.
 
@@ -16,6 +17,7 @@ This project is a tool to gather and use all datas to fill a html page. The whol
 
 add in the header of your page : 
 ```html
+<link href="//cdn.jsdelivr.net/npm/mana-font@latest/css/mana.css" rel="stylesheet" type="text/css" />
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="path/to/dictionary.js"></script>
 ```
