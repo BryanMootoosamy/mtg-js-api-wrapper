@@ -119,7 +119,10 @@ let htmlFiller = (data) => { // fill the card-viewer with card information
         set.innerHTML = 'Nom du Set: '+data.setname;
     };
     rarity.innerHTML = 'Rareté: '+data.rarity;
-    manaCost.innerHTML = 'Coût en mana: '+mana;
+    manaCost.innerHTML = 'Coût en mana: ';
+    mana.forEach(element => {
+        manaCost.innerHTML += "<i class='"+element+" ms-cost ms-shadow' ></i>";
+    });
     if (data.text != undefined) {
         cardText.innerHTML = 'Description des effets: '+data.text;  
     }
