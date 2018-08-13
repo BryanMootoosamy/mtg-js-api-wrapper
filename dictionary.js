@@ -62,12 +62,33 @@ let urlSpliter = () => { // get the multiverse id if exist or the ID inside the 
     return arg[1];
 };
 let manaReplace = (data) => {
-    // if (data.manaCost.includes('{U}')) {
-        let mana = data.manaCost;
-        // mana = mana.replace(/{u}/gi, "+");
-        // console.log(data.manaCost);
-        return mana;
-    // }
+    const regex = /{(\w+)\/?(\w)?}/g;
+    const mana = data.manaCost;
+    let matchings = mana.match(regex);
+    
+    let manaArr = [];
+    matchings.forEach((manaSymbol)=>{
+        manaArr.push(manaSymbol.replace(regex, convertToManaCSS));
+    });
+    return manaArr;
+};
+let convertToManaCSS = (matching, group1, group2) => {
+    let convertedSymbols = ['ms'];
+    const prefix = 'ms-';
+    if(group1 !== undefined){
+        if(group2 === undefined){ // A simple mana symbol
+            convertedSymbols.push(prefix + group1.toLowerCase());
+        }
+        else{ // A complexe mana symbol
+            if(group2 == 'P'){
+                convertedSymbols.push(prefix + group2.toLowerCase() + group1.toLowerCase());
+            }
+            else{
+                convertedSymbols.push(prefix + group1.toLowerCase() + group2.toLowerCase());
+            }
+        }
+        return convertedSymbols.join(' ');
+    }
 };
 let htmlFiller = (data) => { // fill the card-viewer with card information
     title.innerHTML = 'Nom de la carte: '+data.name;
@@ -98,7 +119,10 @@ let htmlFiller = (data) => { // fill the card-viewer with card information
         set.innerHTML = 'Nom du Set: '+data.setname;
     };
     rarity.innerHTML = 'Rareté: '+data.rarity;
-    manaCost.innerHTML = 'Coût en mana: '+mana;
+    manaCost.innerHTML = 'Coût en mana: ';
+    mana.forEach(element => {
+        manaCost.innerHTML += "<i class='"+element+" ms-cost ms-shadow' ></i>";
+    });
     if (data.text != undefined) {
         cardText.innerHTML = 'Description des effets: '+data.text;  
     }
