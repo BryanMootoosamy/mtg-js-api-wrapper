@@ -64,7 +64,13 @@ let urlSpliter = () => { // get the multiverse id if exist or the ID inside the 
 let manaReplace = (data) => {
     const regex = /{(\w+)\/?(\w)?}/g;
     const mana = data.manaCost;
-    return (mana.replace(regex, convertToManaCSS)).split(',');
+    let matchings = mana.match(regex);
+    
+    let manaArr = [];
+    matchings.forEach((manaSymbol)=>{
+        manaArr.push(manaSymbol.replace(regex, convertToManaCSS));
+    });
+    return manaArr;
 };
 let convertToManaCSS = (matching, group1, group2) => {
     let convertedSymbols = ['ms'];
@@ -81,7 +87,7 @@ let convertToManaCSS = (matching, group1, group2) => {
                 convertedSymbols.push(prefix + group1.toLowerCase() + group2.toLowerCase());
             }
         }
-        return convertedSymbols;
+        return convertedSymbols.join(' ');
     }
 };
 let htmlFiller = (data) => { // fill the card-viewer with card information
